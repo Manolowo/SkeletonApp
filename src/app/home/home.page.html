@@ -1,20 +1,57 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
     <ion-title>
-      Blank
+      SkeletonApp
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<h6> Usuario: {{usuario.nombre}}</h6>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="padding">
+  <h1>Bienvenido!</h1>
+  <ion-list>
+    <ion-title>Informacion Adicional</ion-title>
+    <ion-item>
+      <ion-input fill="solid" label="Nombre:" placeholder="Ingrese su nombre" [(ngModel)]="usuario.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input fill="solid" label="Apellido:" placeholder="Ingrese su Apellido" [(ngModel)]="usuario.apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select label="Nivel de Educacion" label-placement="fixed" placeholder="Seleccione su nivel de educacion">
+        <ion-select-option value="Basica Incompleta">Enseñanza Basica Incompleta</ion-select-option>
+        <ion-select-option value="Basica Completa">Enseñanza Basica Completa</ion-select-option>
+        <ion-select-option value="Media Incompleta">Enseñanza Media Incompleta</ion-select-option>
+        <ion-select-option value="Media Completa">Enseñanza Media Completa</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input type="date" fill="solid" label="Fecha de nacimiento:" placeholder="Ingrese su Fecha de nacimiento"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <br>
+  <ion-button (click)="limpiar()" expand="block" >Limpiar
+    <ion-icon slot="start" name="log-in-outline"></ion-icon>
+  </ion-button>
+  <ion-button expand="block" id="present-alert">Mostrar
+    <ion-icon slot="start" name="log-in-outline"></ion-icon>
+  </ion-button>
+
+  <ion-alert
+  trigger="present-alert"
+  header="Usuario info"
+  subHeader="Usuario: {{usuario.nombre}} {{usuario.apellido}}"
+  [buttons]="alertButtons">
+  </ion-alert>
+
+
 </ion-content>
+
+<ion-footer><ion-toolbar><ion-title>App desarrollada por Diego Velasquez, Franco Saldia, Jorge Gonzalez</ion-title></ion-toolbar></ion-footer>
